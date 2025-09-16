@@ -1,0 +1,4 @@
+{
+  "text.kubejs_recipe_blocker.locked_recipe": "このレシピはブロックされています。",
+  "text.kubejs_recipe_blocker.request_block_recipes": "ブロックされたレシピのデータをサーバーに要求しました。"
+}

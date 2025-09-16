@@ -1,0 +1,16 @@
+{
+  "package": "com.glaceon_471.kubejs_recipe_blocker.common.mixin.expatternprovider",
+  "plugin": "com.glaceon_471.kubejs_recipe_blocker.common.mixin.expatternprovider.ExtendedAEPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+    "CraftingThreadMixin",
+    "InscriberThreadMixin",
+    "RecipeExecutorAccessor",
+    "TileCircuitCutterMixin",
+    "TileExChargerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

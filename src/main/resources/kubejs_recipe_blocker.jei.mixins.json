@@ -1,0 +1,12 @@
+{
+  "package": "com.glaceon_471.kubejs_recipe_blocker.client.mixin.jei",
+  "plugin": "com.glaceon_471.kubejs_recipe_blocker.client.mixin.jei.JEIMixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+    "RecipeLayoutMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

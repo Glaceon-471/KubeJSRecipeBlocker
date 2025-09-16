@@ -1,0 +1,96 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "kubejs_recipe_blocker"
+version = "${version}"
+displayName = "KubeJS Recipe Blocker"
+authors = "Glaceon-471"
+description = ''''''
+#logoFile = ""
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "advanced_ae"
+mandatory = false
+versionRange = "${advanced_ae_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "ae2"
+mandatory = false
+versionRange = "${ae2_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "apotheosis"
+mandatory = false
+versionRange = "${apotheosis_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "avaritia"
+mandatory = false
+versionRange = "${avaritia_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "emi"
+mandatory = false
+versionRange = "${emi_version_range}"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "expatternprovider"
+mandatory = false
+versionRange = "${extended_ae_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "jei"
+mandatory = false
+versionRange = "${jei_version_range}"
+ordering = "NONE"
+side = "CLIENT"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "kubejs"
+mandatory = true
+versionRange = "${kubejs_version_range}"
+ordering = "NONE"
+side = "SERVER"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "placebo"
+mandatory = false
+versionRange = "${placebo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.kubejs_recipe_blocker]]
+modId = "rhino"
+mandatory = true
+versionRange = "${rhino_version_range}"
+ordering = "NONE"
+side = "SERVER"

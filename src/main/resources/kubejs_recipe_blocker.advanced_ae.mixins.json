@@ -1,0 +1,13 @@
+{
+  "package": "com.glaceon_471.kubejs_recipe_blocker.common.mixin.advanced_ae",
+  "plugin": "com.glaceon_471.kubejs_recipe_blocker.common.mixin.advanced_ae.AdvancedAEPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+    "QuantumCrafterEntityMixin",
+    "ReactionChamberEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

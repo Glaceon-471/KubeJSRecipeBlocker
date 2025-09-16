@@ -1,0 +1,159 @@
+plugins {
+    id 'dev.architectury.loom' version '1.11-SNAPSHOT'
+    id 'maven-publish'
+}
+
+group = project.maven_group
+version = project.mod_version
+
+base {
+    archivesName = "$project.archives_name-$project.minecraft_version"
+}
+
+var mixinModIds = ['advanced_ae', 'ae2', 'apotheosis', 'avaritia', 'emi', 'expatternprovider', 'jei', 'minecraft']
+
+loom {
+    silentMojangMappingsLicense()
+
+    forge {
+        // mixinConfig 'kubejs_recipe_blocker.mixins.json'
+        for (String modid : mixinModIds) {
+            mixinConfig 'kubejs_recipe_blocker.' + modid + '.mixins.json'
+        }
+    }
+}
+
+repositories {
+    // Add repositories to retrieve artifacts from in here.
+    // You should only use this when depending on other mods because
+    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
+    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
+    // for more information about repositories.
+
+    // Advanced AE, Re:Avaritia
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+
+    // AE2
+    maven {
+        name "Modmaven"
+        url "https://modmaven.dev/"
+        content {
+            includeGroup 'appeng'
+        }
+    }
+
+    // Apotheosis
+    maven {
+        url "https://maven.shadowsoffire.dev/releases"
+        content {
+            includeGroup "dev.shadowsoffire"
+        }
+    }
+
+    // EMI
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
+
+    // JEI
+    maven {
+        // location of the maven that hosts JEI files since January 2023
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+
+    // KubeJS, Rhino
+    maven {
+        url = "https://maven.latvian.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraft:minecraft:$minecraft_version"
+    mappings loom.officialMojangMappings()
+    forge "net.minecraftforge:forge:$forge_version"
+
+    // Advanced AE
+    modImplementation "curse.maven:advancedae-1084104:$advanced_ae_version"
+
+    // AE2
+    modImplementation "appeng:appliedenergistics2-forge:$ae2_version"
+
+    // Apotheosis
+    modImplementation "dev.shadowsoffire:Apotheosis:$apotheosis_version"
+    modImplementation "dev.shadowsoffire:Placebo:${placebo_version}"
+
+    // Re:Avaritia
+    modImplementation "curse.maven:re-avaritia-623969:$avaritia_version"
+
+    // EMI
+    modImplementation "dev.emi:emi-forge:$emi_version"
+
+    // Extended AE
+    modImplementation "curse.maven:ex-pattern-provider-892005:$extended_ae_version"
+
+    // JEI
+    modImplementation "mezz.jei:jei-$minecraft_version-forge:$jei_version"
+
+    // KubeJS
+    modImplementation "dev.latvian.mods:kubejs-forge:$kubejs_version"
+
+    // MixinExtras
+    modCompileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.0"))
+    modImplementation(include("io.github.llamalad7:mixinextras-forge:0.5.0"))
+
+    // Rhino
+    modImplementation "dev.latvian.mods:rhino-forge:$rhino_version"
+}
+
+processResources {
+    inputs.property 'version', project.version
+
+    filesMatching('META-INF/mods.toml') {
+        expand version: inputs.properties.version,
+                advanced_ae_version_range: advanced_ae_version_range, ae2_version_range: ae2_version_range, apotheosis_version_range: apotheosis_version_range,
+                avaritia_version_range: avaritia_version_range, emi_version_range: emi_version_range, extended_ae_version_range: extended_ae_version_range,
+                jei_version_range: jei_version_range, kubejs_version_range: kubejs_version_range, placebo_version_range: placebo_version_range,
+                rhino_version_range: rhino_version_range
+    }
+}
+
+java {
+    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+    // if it is present.
+    // If you remove this line, sources will not be generated.
+    withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 17
+}
+
+// Configure Maven publishing.
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        // Add repositories to publish to here.
+        // Notice: This block does NOT have the same function as the block in the top level.
+        // The repositories here will be used for publishing your artifact, not for
+        // retrieving dependencies.
+    }
+}

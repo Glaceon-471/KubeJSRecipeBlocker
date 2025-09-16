@@ -1,0 +1,14 @@
+{
+  "package": "com.glaceon_471.kubejs_recipe_blocker.common.mixin.apotheosis",
+  "plugin": "com.glaceon_471.kubejs_recipe_blocker.common.mixin.apotheosis.ApotheosisPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "mixins": [
+    "ApothEnchantmentMenuMixin",
+    "GemCuttingMenuMixin",
+    "SalvagingMenuMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
