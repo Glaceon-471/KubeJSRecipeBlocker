@@ -48,7 +48,7 @@ public abstract class BrewingStandBlockEntityMixin {
             ItemStack ingredient = arg4.getItem(index);
             Optional<Recipe<Container>> recipe = MinecraftBrewingRecipeHelper.getRecipe(input, ingredient);
             if (recipe.isEmpty()) continue;
-            if (BlockRecipeManager.isBlocked(uuid, recipe.get(), level)) {
+            if (BlockRecipeManager.isBlocked(uuid, level, recipe.get(), arg4)) {
                 return false;
             }
         }

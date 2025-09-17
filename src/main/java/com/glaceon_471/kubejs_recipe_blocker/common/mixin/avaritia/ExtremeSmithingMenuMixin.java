@@ -29,9 +29,6 @@ public class ExtremeSmithingMenuMixin {
     )
     private boolean createResult(List<ExtremeSmithingRecipe> instance) {
         if (instance.isEmpty()) return true;
-        return BlockRecipeManager.isBlocked(
-            ((ItemCombinerMenuAccessor)this).getPlayer().getUUID(),
-            instance.get(0), level
-        );
+        return BlockRecipeManager.isBlocked(((ItemCombinerMenuAccessor)this).getPlayer().getUUID(), level, instance.get(0), (ExtremeSmithingMenu)(Object)this);
     }
 }

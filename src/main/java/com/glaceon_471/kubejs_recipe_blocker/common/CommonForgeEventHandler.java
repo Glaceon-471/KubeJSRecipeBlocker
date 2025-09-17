@@ -40,7 +40,7 @@ public class CommonForgeEventHandler {
 
     @SubscribeEvent
     public static void onDatapackSync(@NotNull OnDatapackSyncEvent event) {
-        BlockRecipeManager.resetPredicates();
+        BlockRecipeManager.clearFilter();
         RecipeBlockerPlugin.BLOCK_RECIPES.post(new BlockRecipesEventJS());
         BlockRecipeManager.syncBlockRecipes(event.getPlayerList());
     }

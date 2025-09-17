@@ -28,6 +28,6 @@ public class SmithingMenuMixin {
     )
     private boolean createResult(List<SmithingRecipe> instance) {
         Player player = ((ItemCombinerMenuAccessor)this).getPlayer();
-        return instance.isEmpty() || BlockRecipeManager.isBlocked(player.getUUID(), instance.get(0), level);
+        return instance.isEmpty() || BlockRecipeManager.isBlocked(player.getUUID(), level, instance.get(0), (SmithingMenu)(Object)this);
     }
 }

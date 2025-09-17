@@ -34,8 +34,8 @@ public class CondenserBlockEntityMixin {
         CondenserBlockEntity self = (CondenserBlockEntity)(Object)this;
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(self);
         if (capability.isEmpty() || capability.get().getNonOwner()) return false;
-        return instance.isEmpty() && !BlockRecipeManager.isBlocked(capability.get().getOwner(), new AE2CondenserRecipe(
+        return instance.isEmpty() && !BlockRecipeManager.isBlocked(capability.get().getOwner(), self.getLevel(), new AE2CondenserRecipe(
             cm.getSetting(Settings.CONDENSER_OUTPUT).requiredPower, instance
-        ), self.getLevel());
+        ), self);
     }
 }

@@ -25,7 +25,7 @@ public class AbstractFurnaceBlockEntityMixin {
     ) {
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(arg4);
         return instance.isEmpty() || capability.isEmpty() || capability.get().getNonOwner() || BlockRecipeManager.isBlocked(
-            capability.get().getOwner(), instance.get(), arg
+            capability.get().getOwner(), arg, instance.get(), arg4
         ) ? other : instance.get();
     }
 }

@@ -65,7 +65,7 @@ public class CraftingThreadMixin {
             recipe = ((AEStonecuttingPatternAccessor)stoncutting).getRecipe();
         }
 
-        if (BlockRecipeManager.isBlocked(capability.get().getOwner(), recipe, host.getLevel())) {
+        if (BlockRecipeManager.isBlocked(capability.get().getOwner(), host.getLevel(), recipe, host)) {
             callback.setReturnValue(isAwake ? TickRateModulation.IDLE : TickRateModulation.SLEEP);
         }
     }

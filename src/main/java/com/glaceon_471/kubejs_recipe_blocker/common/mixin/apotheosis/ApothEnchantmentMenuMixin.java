@@ -27,7 +27,7 @@ public class ApothEnchantmentMenuMixin {
     )
     private EnchantingRecipe lambda$clickMenuButton$0(Level level, ItemStack input, float eterna, float quanta, float arcana) {
         EnchantingRecipe recipe = EnchantingRecipe.findMatch(level, input, eterna, quanta, arcana);
-        if (BlockRecipeManager.isBlocked(player.getUUID(), recipe, level)) {
+        if (BlockRecipeManager.isBlocked(player.getUUID(), level, recipe, (ApothEnchantmentMenu)(Object)this)) {
             return null;
         }
         return recipe;
@@ -42,7 +42,7 @@ public class ApothEnchantmentMenuMixin {
     )
     private EnchantingRecipe lambda$getEnchantmentList$2(Level level, ItemStack input, float eterna, float quanta, float arcana) {
         EnchantingRecipe recipe = EnchantingRecipe.findMatch(level, input, eterna, quanta, arcana);
-        if (BlockRecipeManager.isBlocked(player.getUUID(), recipe, level)) {
+        if (BlockRecipeManager.isBlocked(player.getUUID(), level, recipe, (ApothEnchantmentMenu)(Object)this)) {
             return null;
         }
         return recipe;

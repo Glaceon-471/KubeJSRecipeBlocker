@@ -32,7 +32,7 @@ public abstract class SalvagingMenuMixin {
     )
     private List<ItemStack> salvageAll$SalvageItem(Level level, ItemStack stack) {
         SalvagingRecipe recipe = SalvagingMenu.findMatch(level, stack);
-        if (BlockRecipeManager.isBlocked(player.getUUID(), recipe, level)) {
+        if (BlockRecipeManager.isBlocked(player.getUUID(), level, recipe, (SalvagingMenu)(Object)this)) {
             return Collections.emptyList();
         }
         return SalvagingMenu.salvageItem(level, stack);

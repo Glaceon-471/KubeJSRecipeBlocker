@@ -50,7 +50,7 @@ public class StonecutterMenuMixin {
     )
     private void setupRecipeList(StonecutterMenu instance, List<StonecutterRecipe> value) {
         UUID uuid = player.getUUID();
-        value.removeIf(recipe -> BlockRecipeManager.isBlocked(uuid, recipe, level));
+        value.removeIf(recipe -> BlockRecipeManager.isBlocked(uuid, level, recipe, instance));
         recipes = value;
     }
 }

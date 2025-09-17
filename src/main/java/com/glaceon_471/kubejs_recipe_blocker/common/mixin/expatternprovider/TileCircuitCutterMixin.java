@@ -27,10 +27,10 @@ public class TileCircuitCutterMixin {
         IRecipeMachine<?, CircuitCutterRecipe> machine = ((RecipeExecutorAccessor<CircuitCutterRecipe>)instance).getMachine();
         CircuitCutterRecipe recipe = machine.getContext().currentRecipe;
         if (recipe != null) {
-            TileCircuitCutter block = (TileCircuitCutter)(Object)this;
-            Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(block);
+            TileCircuitCutter self = (TileCircuitCutter)(Object)this;
+            Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(self);
             if (capability.isEmpty() || capability.get().getNonOwner() || BlockRecipeManager.isBlocked(
-                capability.get().getOwner(), recipe, block.getLevel()
+                capability.get().getOwner(), self.getLevel(), recipe, self
             )) {
                 return TickRateModulation.URGENT;
             }

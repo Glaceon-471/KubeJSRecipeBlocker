@@ -39,7 +39,7 @@ public abstract class InscriberThreadMixin {
     private boolean tickingRequestHasCraftWork(InscriberThread instance) {
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(host);
         return hasCraftWork() && capability.isPresent() && !capability.get().getNonOwner() && !BlockRecipeManager.isBlocked(
-            capability.get().getOwner(), cachedTask, host.getLevel()
+            capability.get().getOwner(), host.getLevel(), cachedTask, host
         );
     }
 }

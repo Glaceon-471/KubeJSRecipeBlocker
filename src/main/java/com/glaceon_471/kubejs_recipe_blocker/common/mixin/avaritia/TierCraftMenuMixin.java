@@ -29,9 +29,10 @@ public class TierCraftMenuMixin {
         remap = true
     )
     private boolean slotsChanged(Optional<ITierCraftingRecipe> instance) {
-        Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(((TierCraftMenu)(Object)this).getTileEntity());
+        TierCraftMenu self = (TierCraftMenu)(Object)this;
+        Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(self.getTileEntity());
         return instance.isPresent() && capability.isPresent() && !(capability.get().getNonOwner() || BlockRecipeManager.isBlocked(
-            capability.get().getOwner(), instance.get(), world
+            capability.get().getOwner(), world, instance.get(), self
         ));
     }
 }

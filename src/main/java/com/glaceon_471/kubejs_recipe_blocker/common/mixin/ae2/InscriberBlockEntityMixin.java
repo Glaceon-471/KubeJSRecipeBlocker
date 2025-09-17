@@ -32,7 +32,7 @@ public abstract class InscriberBlockEntityMixin {
         InscriberBlockEntity self = (InscriberBlockEntity)(Object)this;
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(self);
         return hasCraftWork() && capability.isPresent() && !capability.get().getNonOwner() && !BlockRecipeManager.isBlocked(
-            capability.get().getOwner(), cachedTask, self.getLevel()
+            capability.get().getOwner(), self.getLevel(), cachedTask, self
         );
     }
 }

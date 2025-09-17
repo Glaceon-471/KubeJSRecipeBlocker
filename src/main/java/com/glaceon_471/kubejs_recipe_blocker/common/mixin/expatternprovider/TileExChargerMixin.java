@@ -24,11 +24,12 @@ public class TileExChargerMixin {
         )
     )
     private ChargerRecipe doWork(Level level, ItemStack input) {
-        Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability((TileExCharger)(Object)this);
+        TileExCharger self = (TileExCharger)(Object)this;
+        Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(self);
         if (capability.isEmpty() || capability.get().getNonOwner()) {
             return null;
         }
         ChargerRecipe recipe = ChargerRecipes.findRecipe(level, input);
-        return BlockRecipeManager.isBlocked(capability.get().getOwner(), recipe, level) ? null : recipe;
+        return BlockRecipeManager.isBlocked(capability.get().getOwner(), level, recipe, self) ? null : recipe;
     }
 }

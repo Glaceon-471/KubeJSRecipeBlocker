@@ -32,6 +32,6 @@ public abstract class EntropyManipulatorItemMixin {
     )
     private EntropyRecipe tryApplyEffect(Level level, EntropyMode mode, BlockState block, FluidState fluid, @Local(argsOnly = true) Player p) {
         EntropyRecipe recipe = findRecipe(level, mode, block, fluid);
-        return BlockRecipeManager.isBlocked(p.getUUID(), recipe, level) ? null : recipe;
+        return BlockRecipeManager.isBlocked(p.getUUID(), level, recipe) ? null : recipe;
     }
 }

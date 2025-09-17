@@ -31,7 +31,7 @@ public class CampfireBlockEntityMixin {
         if (instance.isEmpty()) return instance.map(mapper);
         CampfireCookingRecipe recipe = instance.get();
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(arg4);
-        if (capability.isEmpty() || capability.get().getNonOwner() || BlockRecipeManager.isBlocked(capability.get().getOwner(), recipe, arg)) {
+        if (capability.isEmpty() || capability.get().getNonOwner() || BlockRecipeManager.isBlocked(capability.get().getOwner(), arg, recipe, arg4)) {
             return Optional.empty();
         }
         return instance.map(mapper);

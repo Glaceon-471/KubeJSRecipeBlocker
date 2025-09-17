@@ -31,7 +31,7 @@ public abstract class ReactionChamberEntityMixin {
         ReactionChamberEntity self = (ReactionChamberEntity)(Object)this;
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(self);
         return hasCraftWork() && capability.isPresent() && !capability.get().getNonOwner() && !BlockRecipeManager.isBlocked(
-            capability.get().getOwner(), cachedTask, self.getLevel()
+            capability.get().getOwner(), self.getLevel(), cachedTask, instance
         );
     }
 }

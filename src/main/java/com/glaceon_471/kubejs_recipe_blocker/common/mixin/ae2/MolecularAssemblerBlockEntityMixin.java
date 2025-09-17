@@ -38,8 +38,8 @@ public class MolecularAssemblerBlockEntityMixin {
         cancellable = true
     )
     private void tickingRequest(IGridNode node, int ticksSinceLastCall, CallbackInfoReturnable<TickRateModulation> callback) {
-        MolecularAssemblerBlockEntity block = (MolecularAssemblerBlockEntity)(Object)this;
-        Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(block);
+        MolecularAssemblerBlockEntity self = (MolecularAssemblerBlockEntity)(Object)this;
+        Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(self);
         if (capability.isEmpty() || capability.get().getNonOwner()) {
             callback.setReturnValue(isAwake ? TickRateModulation.IDLE : TickRateModulation.SLEEP);
             return;
@@ -61,7 +61,7 @@ public class MolecularAssemblerBlockEntityMixin {
             return;
         }
 
-        if (BlockRecipeManager.isBlocked(capability.get().getOwner(), recipe, block.getLevel())) {
+        if (BlockRecipeManager.isBlocked(capability.get().getOwner(), self.getLevel(), recipe, self)) {
             callback.setReturnValue(isAwake ? TickRateModulation.IDLE : TickRateModulation.SLEEP);
         }
     }

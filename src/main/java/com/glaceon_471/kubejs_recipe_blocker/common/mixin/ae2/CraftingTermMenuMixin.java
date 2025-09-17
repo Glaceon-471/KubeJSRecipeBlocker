@@ -26,6 +26,6 @@ public class CraftingTermMenuMixin {
     )
     private void updateCurrentRecipeAndOutput(CraftingTermMenu instance, Recipe<CraftingContainer> value) {
         Player player = instance.getPlayer();
-        currentRecipe = BlockRecipeManager.isBlocked(player.getUUID(), value, player.level()) ? null : value;
+        currentRecipe = BlockRecipeManager.isBlocked(player.getUUID(), player.level(), value, instance) ? null : value;
     }
 }

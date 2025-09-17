@@ -34,9 +34,8 @@ public class NeutronCompressorTileMixin {
         @Local(argsOnly = true) NeutronCompressorTile block
     ) {
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(block);
-
         return instance.matches(container, level) && capability.isPresent() && !capability.get().getNonOwner() && !BlockRecipeManager.isBlocked(
-            capability.get().getOwner(), instance, level
+            capability.get().getOwner(), level, instance, block
         );
     }
 
@@ -60,7 +59,7 @@ public class NeutronCompressorTileMixin {
         }
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(block);
         mixin.recipe = capability.isEmpty() || capability.get().getNonOwner() || BlockRecipeManager.isBlocked(
-            capability.get().getOwner(), value, level
+            capability.get().getOwner(), level, value, block
         ) ? null : value;
     }
 }

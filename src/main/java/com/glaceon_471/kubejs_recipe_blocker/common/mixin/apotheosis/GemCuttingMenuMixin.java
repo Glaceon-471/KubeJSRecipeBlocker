@@ -27,6 +27,8 @@ public class GemCuttingMenuMixin {
     )
     private boolean clickMenuButton(GemCuttingMenu.GemCuttingRecipe instance, ItemStack gem, ItemStack left, ItemStack bot, ItemStack right) {
         if (!instance.matches(gem, left, bot, right)) return false;
-        return !BlockRecipeManager.isBlocked(player.getUUID(), new ApotheosisGemCuttingRecipe(instance, gem, left, bot, right), player.level());
+        return !BlockRecipeManager.isBlocked(player.getUUID(), player.level(), new ApotheosisGemCuttingRecipe(
+            instance, gem, left, bot, right
+        ), (GemCuttingMenu)(Object)this);
     }
 }

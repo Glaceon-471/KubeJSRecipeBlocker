@@ -30,7 +30,7 @@ public class TransformLogicMixin {
             return false;
         }
         return instance.isEmpty() && !BlockRecipeManager.isBlocked(
-            entity.getOwner().getUUID(), recipe, level
+            entity.getOwner().getUUID(), level, recipe
         );
     }
 }

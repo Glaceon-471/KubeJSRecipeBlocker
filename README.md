@@ -62,7 +62,15 @@ RecipeBlockerEvents.blockRecipes((event) => {
       return 条件Boolean;
     });
     
-    event.filter(レシピタイプId, data => {
+    event.filterRecipe(レシピタイプId, data => {
+      return 条件Boolean;
+    });
+    
+    event.filterBlock(ブロックエンティティタイプId, data => {
+      return 条件Boolean;
+    });
+    
+    event.filterMenu(メニュータイプId, data => {
       return 条件Boolean;
     });
 });

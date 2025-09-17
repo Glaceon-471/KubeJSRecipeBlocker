@@ -28,7 +28,7 @@ public abstract class QuantumCrafterEntityMixin {
     private void makeCraftingRecipeList(QuantumCrafterEntity instance, CraftingJob job, int toCraft) {
         Optional<IBlockOwnerCapability> capability = BlockOwnerCapability.getCapability(instance);
         if (capability.isEmpty() || capability.get().getNonOwner() || BlockRecipeManager.isBlocked(
-            capability.get().getOwner(), ((AECraftingPatternAccessor)job.pattern).getRecipe(), instance.getLevel()
+            capability.get().getOwner(), instance.getLevel(), ((AECraftingPatternAccessor)job.pattern).getRecipe(), instance
         )) {
             return;
         }
