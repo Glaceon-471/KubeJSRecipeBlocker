@@ -58,13 +58,13 @@
 ## KubeJSの書き方
 ```js
 RecipeBlockerEvents.blockRecipes((event) => {
-    event.block(data => {
+    event.filter(data => {
       return 条件Boolean;
     });
     
-    event.block(レシピタイプId, data => {
+    event.filter(レシピタイプId, data => {
       return 条件Boolean;
     });
 });
 ```
-returnがtrueだったらレシピ封印
+returnがfalseだったらレシピ封印

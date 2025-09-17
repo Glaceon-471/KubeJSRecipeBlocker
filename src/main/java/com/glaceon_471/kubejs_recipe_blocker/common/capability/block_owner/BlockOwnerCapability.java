@@ -3,12 +3,10 @@ package com.glaceon_471.kubejs_recipe_blocker.common.capability.block_owner;
 import com.glaceon_471.kubejs_recipe_blocker.common.registries.ModCapabilities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class BlockOwnerCapability implements IBlockOwnerCapability {
     private UUID owner;

@@ -22,24 +22,24 @@ import java.util.*;
 import java.util.function.Predicate;
 
 public class BlockRecipeManager {
-    private static final List<Predicate<BlockRecipeEventJS<Recipe<?>>>> ALL_PREDICATES = new ArrayList<>();
-    private static final Map<RecipeType<?>, List<Predicate<BlockRecipeEventJS<Recipe<?>>>>> PREDICATES = new HashMap<>();
+    private static final List<Predicate<BlockRecipeEventJS<Recipe<?>>>> ALL_FILTERS = new ArrayList<>();
+    private static final Map<RecipeType<?>, List<Predicate<BlockRecipeEventJS<Recipe<?>>>>> FILTERS = new HashMap<>();
     private static final List<ResourceLocation> BLOCK_RECIPES = new ArrayList<>();
 
-    public static void addPredicate(Predicate<BlockRecipeEventJS<Recipe<?>>> predicate) {
-        ALL_PREDICATES.add(predicate);
+    public static void addFilter(Predicate<BlockRecipeEventJS<Recipe<?>>> filter) {
+        ALL_FILTERS.add(filter);
     }
 
-    public static void addPredicate(RecipeType<?> type, Predicate<BlockRecipeEventJS<Recipe<?>>> predicate) {
-        if (!PREDICATES.containsKey(type)) {
-            PREDICATES.put(type, new ArrayList<>());
+    public static void addFilter(RecipeType<?> type, Predicate<BlockRecipeEventJS<Recipe<?>>> filter) {
+        if (!FILTERS.containsKey(type)) {
+            FILTERS.put(type, new ArrayList<>());
         }
-        PREDICATES.get(type).add(predicate);
+        FILTERS.get(type).add(filter);
     }
 
     public static void resetPredicates() {
-        PREDICATES.clear();
-        ALL_PREDICATES.clear();
+        FILTERS.clear();
+        ALL_FILTERS.clear();
     }
 
     public static <T extends Recipe<?>> boolean isBlocked(UUID player, @Nullable T recipe, Level level) {
@@ -48,15 +48,15 @@ public class BlockRecipeManager {
         }
         BlockRecipeEventJS<Recipe<?>> event = new BlockRecipeEventJS<>(player, recipe, level);
         RecipeType<?> type = recipe.getType();
-        if (PREDICATES.containsKey(type)) {
-            for (Predicate<BlockRecipeEventJS<Recipe<?>>> predicate : PREDICATES.get(type)) {
-                if (predicate.test(event)) {
+        if (FILTERS.containsKey(type)) {
+            for (Predicate<BlockRecipeEventJS<Recipe<?>>> filter : FILTERS.get(type)) {
+                if (!filter.test(event)) {
                     return true;
                 }
             }
         }
-        for (Predicate<BlockRecipeEventJS<Recipe<?>>> predicate : ALL_PREDICATES) {
-            if (predicate.test(event)) {
+        for (Predicate<BlockRecipeEventJS<Recipe<?>>> filter : ALL_FILTERS) {
+            if (!filter.test(event)) {
                 return true;
             }
         }

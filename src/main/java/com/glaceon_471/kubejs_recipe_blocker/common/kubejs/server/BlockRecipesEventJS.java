@@ -12,11 +12,11 @@ public class BlockRecipesEventJS extends EventJS {
 
     public BlockRecipesEventJS() { }
 
-    public void block(Predicate<BlockRecipeEventJS<Recipe<?>>> predicate) {
-        BlockRecipeManager.addPredicate(predicate);
+    public void filter(Predicate<BlockRecipeEventJS<Recipe<?>>> predicate) {
+        BlockRecipeManager.addFilter(predicate);
     }
 
-    public void block(ResourceLocation type, Predicate<BlockRecipeEventJS<Recipe<?>>> predicate) {
-        BlockRecipeManager.addPredicate(ForgeRegistries.RECIPE_TYPES.getValue(type), predicate);
+    public void filter(ResourceLocation type, Predicate<BlockRecipeEventJS<Recipe<?>>> predicate) {
+        BlockRecipeManager.addFilter(ForgeRegistries.RECIPE_TYPES.getValue(type), predicate);
     }
 }
